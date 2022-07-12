@@ -34,28 +34,27 @@ class LandingHeader extends StatelessWidget {
                     child: Stack(
                       alignment: Alignment.center,
                       children: [
-                        if (snapshot.data! == i) ...{
-                          Container(
-                            margin: const EdgeInsets.all(10),
-                            height: 60,
-                            width: double.maxFinite,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: prim,
-                                width: 2,
-                              ),
-                              borderRadius: BorderRadius.circular(60),
-                            ),
-                          ),
-                        },
+                        // if (snapshot.data! == i) ...{
+                        //   Container(
+                        //     margin: const EdgeInsets.all(10),
+                        //     height: 60,
+                        //     width: double.maxFinite,
+                        //     decoration: BoxDecoration(
+                        //       border: Border.all(
+                        //         color: prim,
+                        //         width: 2,
+                        //       ),
+                        //       borderRadius: BorderRadius.circular(60),
+                        //     ),
+                        //   ),
+                        // },
                         Text(
                           _tabContents[i].toUpperCase(),
                           style: TextStyle(
                             color: snapshot.data! == i ? prim : color,
                             fontSize: 18,
-                            fontWeight: snapshot.data! == i
-                                ? FontWeight.w700
-                                : FontWeight.w300,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ],
@@ -115,7 +114,19 @@ class LandingHeader extends StatelessWidget {
         return AnimatedContainer(
           duration: const Duration(milliseconds: 500),
           width: double.maxFinite,
-          color: bgColor.withOpacity(snapshot.data!),
+          decoration: BoxDecoration(
+              color: bgColor.withOpacity(snapshot.data!),
+              borderRadius: const BorderRadius.vertical(
+                bottom: Radius.circular(5),
+              ),
+              boxShadow: [
+                BoxShadow(
+                  color: bgColor.withOpacity(snapshot.data!),
+                  offset: const Offset(2, 2),
+                  blurRadius: 5,
+                  spreadRadius: 1,
+                )
+              ]),
           child: isMobile
               ? Column(
                   children: [
@@ -126,7 +137,7 @@ class LandingHeader extends StatelessWidget {
                     ),
                     Expanded(
                       child: tabBar(
-                        prim,
+                        primaryMinus,
                         accent,
                       ),
                     )
@@ -139,7 +150,7 @@ class LandingHeader extends StatelessWidget {
                       title(accent),
                       const Spacer(),
                       tabBar(
-                        prim,
+                        primaryMinus,
                         accent,
                         width: 600,
                       )

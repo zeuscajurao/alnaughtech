@@ -4,7 +4,7 @@ import 'package:naughtech/landing_dependencies/bloc/appbar_opacity.dart';
 abstract class LandingMethod {
   final AppBarOpacity opacity = AppBarOpacity.instance;
   scrollListener(ScrollController controller) {
-    double ff = controller.position.pixels / 900;
+    double ff = controller.position.pixels / 650;
     opacity.update(ff < 1.0 ? ff : 1.0);
   }
 }

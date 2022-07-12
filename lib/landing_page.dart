@@ -44,6 +44,14 @@ class _LandingPageState extends State<LandingPage> with LandingMethod {
         return Stack(
           children: [
             Positioned.fill(
+              child: Image.network(
+                "https://www.pngkey.com/png/full/21-218910_transparent-wallpapers-abstract-abstract-art.png",
+                // "https://pngimage.net/wp-content/uploads/2018/06/splatter-png-.png",
+                fit: BoxFit.cover,
+                color: Colors.grey.shade800.withOpacity(.1),
+              ),
+            ),
+            Positioned.fill(
               child: StreamBuilder<int>(
                 stream: _streammer.stream,
                 builder: (_, snapshot) {
